@@ -1,3 +1,4 @@
+**Table of Contents**
 - [Handling Large Files- Git LFS](#handling-large-files--git-lfs)
 - [Setting Up a Local Git Server](#setting-up-a-local-git-server)
 

@@ -1,5 +1,4 @@
-# Table Of Contents
-- [Table Of Contents](#table-of-contents)
+**Table of Contents**
 - [Visual Studio Code](#visual-studio-code)
 - [Git](#git)
 - [Continuous Integration](#continuous-integration)

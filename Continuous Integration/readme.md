@@ -1,4 +1,10 @@
+**Table of Contents**
 - [Jenkins](#jenkins)
+  - [Master Installation](#master-installation)
+  - [Agents](#agents)
+  - [Old School Agents](#old-school-agents)
+  - [Jenkins for Unity](#jenkins-for-unity)
+  - [Jenkins Scripts/Pipelines](#jenkins-scriptspipelines)
 
 # Jenkins
 Jenkins is a mature open source CI server.
