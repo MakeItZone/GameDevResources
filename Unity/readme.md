@@ -7,6 +7,7 @@
   - [Common Settings/Tweaks](#common-settingstweaks)
   - [References](#references)
 - [Organizing the Hierarcy](#organizing-the-hierarcy)
+- [Health Bars](#health-bars)
 - [Importing Blender Files](#importing-blender-files)
   - [General Setup](#general-setup)
   - [Animations](#animations)
@@ -82,6 +83,14 @@ See [this page](https://docs.unity3d.com/Manual/CollidersOverview.html) for deta
 # Organizing the Hierarcy
 
 Can use empties as "folders" to keep the hierarchy sane. It does have a performance penality, but for smaller project, it shouldn't be an issue.
+
+# Health Bars
+- Simple sprite based health bar UIs:
+  - [Concise Medium Post](https://medium.com/swlh/game-dev-how-to-make-health-bars-in-unity-from-beginner-to-advanced-9a1d728d0cbf)
+  - [Slightly longer form tutorial, with video](https://weeklyhow.com/how-to-make-a-health-bar-in-unity/)
+  - [summerized tutorial](http://gyanendushekhar.com/2019/11/17/create-health-bar-unity-3d/)
+  - [google search on the topic](https://www.google.com/search?q=unity+add+a+health+bar+to+ui)
+- [discussion on how to draw a rect on the UI](https://forum.unity.com/threads/draw-a-simple-rectangle-filled-with-a-color.116348/) - more technical details, with some potential problems. Key thing: don't (re)create objects on every update/gui update call!
 
 # Importing Blender Files
 
