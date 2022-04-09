@@ -1,12 +1,24 @@
-# Unity Notes
+# Table Of Contents
+- [Table Of Contents](#table-of-contents)
+- [Visual Studio Code](#visual-studio-code)
+- [Git](#git)
+- [Continuous Integration](#continuous-integration)
+- [Unity Store Packages](#unity-store-packages)
+- [Movement that Doesn't Go Through Walls](#movement-that-doesnt-go-through-walls)
+  - [Common Settings/Tweaks](#common-settingstweaks)
+  - [References](#references)
+- [Organizing the Hierarcy](#organizing-the-hierarcy)
+- [Importing Blender Files](#importing-blender-files)
+  - [General Setup](#general-setup)
+  - [Animations](#animations)
 
-## Visual Studio Code
+# Visual Studio Code
 
 It's worth going through the [full setup](https://code.visualstudio.com/docs/other/unity). Do it once, and then copy the few extras into your next project.
 
 The debugger seems to be a dead project, but for now it still works with some [tweaks](https://github.com/Unity-Technologies/vscode-unity-debug/issues/202).
 
-## Git
+# Git
 
 Follow all the instructions from [thoughtbot](https://thoughtbot.com/blog/how-to-git-with-unity).
 
@@ -22,7 +34,21 @@ Probably not worth trying to merge changes in Unity scene files; know how to cho
 
 After a `pull` you may get errors re unfound prefabs, missing files, etc. Try closing Unity and deleting the `Library` directory. It contains caches etc that may not always be updated if you change things via Git. When you reopen the project Unity will rebuild the `Library` directory and things should work.
 
-## Movement that Doesn't Go Through Walls
+# Continuous Integration
+
+See the [CI notes](../Continuous%20Integration/readme.md)
+
+# Unity Store Packages
+
+If someone on the team adds a package, even if it's a free (cost and sharable license) it will problaby mess up when imported by another teammate.
+
+Guess: each person will have to "purchase" the package, and make sure it's available for use in their projects.
+
+TODO: verify above guess works.
+
+TODO: check re licensing/distribution of packages- e.g. if the content ends up in your project, if it needs to be explicitly excluded in github, etc
+
+# Movement that Doesn't Go Through Walls
 
 *TL;DR - don't use `transform.Translate` or even `rigidbody.MovePosition()`! Use `rigidbody.AddForce()` only!*
 
@@ -36,7 +62,7 @@ Vocabulary:
 
 See [this page](https://docs.unity3d.com/Manual/CollidersOverview.html) for details and a handy summary table.
 
-### Common Settings/Tweaks
+## Common Settings/Tweaks
 
 * on player characters `rigidbody`: 
     * set `Collision Detection` to continuous. Slight performance penalty, but checks the physics more often, less chance to pop through objects
@@ -47,18 +73,18 @@ See [this page](https://docs.unity3d.com/Manual/CollidersOverview.html) for deta
   * `Input Manager`, or custom input settings if using the new input manager - may want to tweak the `acceleration`, `snap to` etc for how digital inputs (wasd) are translated to analog axis. OR don't use the axis and just check for keys being pressed.
   * explore the other physics and input settings to tweak how things perform
 
-### References
+## References
 * [really good intro to using RB physics to not go through walls](https://answers.unity.com/questions/1788697/how-to-fix-my-player-from-phasing-through-walls.html) - note, mentions `rb.MovePosition` but in my limited experience, that didn't work reliably
 * [more detailed example using rb to move](https://answers.unity.com/questions/1743970/make-player-not-go-through-walls.html) - note, it's set up to move character aligned to world coordinates. Doesn't work with mouse look type setups. For that you just need to add something like `transform.TransformDirection(moveInput) * moveSpeed` before using the vector with the RB forces (which are in world space)
 * [explaining the different rb force modes](https://answers.unity.com/questions/789917/difference-and-uses-of-rigidbody-force-modes.html)
 * [stopping a rigid body quickly - set the velocity and rotational velocity](https://answers.unity.com/questions/662811/rigidbody-how-to-stop-it-quickly.html)
 * [a thread discussing ways to try and stop going through walls](https://forum.unity.com/threads/what-are-the-necessary-settings-to-prevent-objects-passing-through-each-other-at-high-speeds.384519/)
 
-## Organizing the Hierarcy
+# Organizing the Hierarcy
 
 Can use empties as "folders" to keep the hierarchy sane. It does have a performance penality, but for smaller project, it shouldn't be an issue.
 
-## Importing Blender Files
+# Importing Blender Files
 
 There are two workflows:
 
@@ -70,8 +96,7 @@ Using a blender file directly is faster to develop with.
 
 Using an explicit fbx gives more control. Can seperate editing from updating the game.
 
-
-### General Setup
+## General Setup
 Unity and Blender have different handedness for their coordinate systems (z up vs y up). To make things import with zero issues, especially animations:
 
 (NOTE: need to verify this is the right sequence):
@@ -83,7 +108,7 @@ Unity and Blender have different handedness for their coordinate systems (z up v
 * export/import into Unity
 
 
-### Animations
+## Animations
 
 Can create multiple animation sequences for an object by using `Dope sheet->Actions`.
 
